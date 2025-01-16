@@ -79,16 +79,67 @@ $(document).ready(function () {
     $({ countNum: $this.text() }).animate(
       { countNum: countTo },
       {
-        duration: 2000, // 2 seconds
+        duration: 2000, 
         easing: 'linear',
         step: function () {
           $this.text(Math.floor(this.countNum));
         },
         complete: function () {
-          $this.text(this.countNum); // Ensure final value is exact
+          $this.text(this.countNum); 
         },
       }
     );
   });
 });
+/*************************** */
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const modal = new bootstrap.Modal(document.getElementById('auto'));
+    modal.show();
+  }, 5000); 
+});
+const accordeons = document.querySelectorAll('.accordion-button');
+accordeons.forEach(acc => {
+  acc.addEventListener('click', function() {
+    const allAccordions = document.querySelectorAll('.accordion-button');
+    allAccordions.forEach(button => {
+      if (button !== acc) {
+        button.setAttribute('aria-expanded', 'false');
+        button.closest('.accordion-item').querySelector('.accordion-collapse').classList.remove('show');
+      }
+    });
+  });
+});
 
+function countUp(element) {
+  const target = parseInt(element.getAttribute('data-count'), 10);
+  const duration = 2000; 
+  const stepTime = Math.abs(Math.floor(duration / target));
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current += 1;
+    element.textContent = current;
+    if (current >= target) {
+      clearInterval(timer);
+    }
+  }, stepTime);
+}
+document.addEventListener('DOMContentLoaded', function () {
+  const counters = document.querySelectorAll('.counter');
+  const section = document.getElementById('stats-section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        counters.forEach((counter) => {
+          if (!counter.classList.contains('counted')) { 
+            counter.classList.add('counted');
+            countUp(counter);
+          }
+        });
+        observer.unobserve(section); 
+      }
+    });
+  }, { threshold: 0.3 }); 
+  observer.observe(section);
+});

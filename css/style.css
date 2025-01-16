@@ -16,6 +16,10 @@ body, h1, h2, h3, p, ul, li, a {
 body {
   background: var(--second);
   overflow-x: hidden;
+  
+}
+html, body{
+  scroll-padding-top: 100px;
 }
 
 .bg-first {
@@ -222,4 +226,123 @@ footer {
 
 .back-to-top i {
   pointer-events: none; 
+}
+
+/*******************************************************************************************/
+.cta-container {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1;
+}
+
+/* Enquire Now Button */
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Expandable Buttons */
+.cta-expandable {
+  position: relative;
+  background-color: #28a745;
+  color: white;
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-expandable:hover {
+  width: 200px; /* Expand on hover */
+}
+
+.cta-expandable .icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.cta-expandable .cta-text {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cta-expandable:hover .cta-text {
+  opacity: 1;
+}
+
+/* Specific Styles for Buttons */
+.download-brochure {
+  background-color: #ffc107;
+}
+
+.download-brochure:hover {
+  background-color: #e0a800;
+}
+
+.call-now {
+  background-color: #17a2b8;
+}
+
+.call-now:hover {
+  background-color: #138496;
+}
+.carousel1 img:hover{
+  filter: invert(1);
+}
+
+
+/* Container for the CTA Button */
+.vertical-cta-container {
+  position: fixed;
+  left: 10px;
+  top: 190%;
+  transform: translateY(-50%);
+}
+
+/* Vertical Enquire Now Button */
+.vertical-cta-button {
+  writing-mode: vertical-rl; /* Makes the text vertical */
+  text-orientation: mixed; /* Ensures proper text orientation */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 2;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.vertical-cta-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight zoom effect */
 }
